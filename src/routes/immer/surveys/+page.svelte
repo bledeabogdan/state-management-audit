@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { store, storeReducer } from '../../stores/surveys.immer.store';
+	import { store, storeReducer } from '../../../stores/surveys.immer.store';
 
 	const { actions } = store;
 	const { dispatch } = storeReducer;
@@ -21,8 +21,6 @@
 	function handleSurveyReducerDelete(id: number) {
 		dispatch({ type: 'DELETE_SURVEY', payload: id });
 	}
-
-	$: console.log($storeReducer);
 </script>
 
 <button on:click={handleClick}>Add survey</button>
