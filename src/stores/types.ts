@@ -3,7 +3,7 @@ export interface SurveyData {
 	name: string;
 }
 
-interface QuestionData {
+export interface QuestionData {
 	id: number;
 	shortcut: string;
 	mainCaption: string;
@@ -21,7 +21,7 @@ export interface GlobalState {
 	currentTabPanel: DesignTabState;
 }
 
-interface CurrentSurveyState {
+export interface CurrentSurveyState {
 	id: number;
 	questions: QuestionsState;
 	currentQuestion: {
