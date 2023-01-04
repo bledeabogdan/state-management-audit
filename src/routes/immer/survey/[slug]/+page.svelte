@@ -17,6 +17,10 @@
 			type: 'SET_CURRENT_SURVEY',
 			payload: id
 		});
+
+		return () => {
+			dispatch({ type: 'CLEAR_CURRENT_QUESTION' });
+		};
 	});
 
 	function handleQuestionAdd() {

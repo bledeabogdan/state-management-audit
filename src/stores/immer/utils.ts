@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 
 export type Action = {
 	type: string;
-	payload: any;
+	payload?: any;
 };
 
 export function createImmerReducerStore(initialState: any, reducer: any) {

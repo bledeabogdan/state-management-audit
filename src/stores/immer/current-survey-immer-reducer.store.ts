@@ -16,6 +16,7 @@ const ADD_RESPONSE = 'ADD_RESPONSE';
 const SET_CURRENT_SURVEY = 'SET_CURRENT_SURVEY';
 const SET_CURRENT_QUESTION = 'SET_CURRENT_QUESTION';
 const UPDATE_QUESTION = 'UPDATE_QUESTION';
+const CLEAR_CURRENT_QUESTION = 'CLEAR_CURRENT_QUESTION';
 
 function reducer(state: CurrentSurveyState, action: Action) {
 	switch (action.type) {
@@ -48,6 +49,16 @@ function reducer(state: CurrentSurveyState, action: Action) {
 					draft.questions[questionIndex].mainCaption = question.mainCaption;
 					draft.questions[questionIndex].shortcut = question.shortcut;
 				}
+			})(state);
+		}
+		case CLEAR_CURRENT_QUESTION: {
+			return produce((draft: CurrentSurveyState) => {
+				draft.id = 0;
+				draft.questions = [];
+				draft.currentQuestion = {
+					id: 0,
+					responses: []
+				};
 			})(state);
 		}
 	}
