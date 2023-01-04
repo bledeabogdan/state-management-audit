@@ -30,6 +30,6 @@ export interface CurrentSurveyState {
 	};
 }
 
-export type DesignTabState = 'questions' | 'responses';
+export type DesignTabState = 'responses' | 'routings';
 export type SurveysState = SurveyData[];
 export type QuestionsState = QuestionData[];

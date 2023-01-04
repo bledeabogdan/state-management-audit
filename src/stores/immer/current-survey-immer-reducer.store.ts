@@ -32,6 +32,7 @@ function reducer(state: CurrentSurveyState, action: Action) {
 		case SET_CURRENT_QUESTION: {
 			return produce((draft: CurrentSurveyState) => {
 				draft.currentQuestion.id = action.payload as number;
+				draft.currentQuestion.responses = [];
 			})(state);
 		}
 		case ADD_RESPONSE: {

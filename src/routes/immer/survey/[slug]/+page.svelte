@@ -56,7 +56,9 @@
 			<QuestionPreview />
 		</Column>
 	</Row>
-	<Row>
-		<Column><Tabs /></Column>
-	</Row>
+	{#if $store.currentQuestion.id}
+		<Row>
+			<Column><Tabs /></Column>
+		</Row>
+	{/if}
 </Grid>
