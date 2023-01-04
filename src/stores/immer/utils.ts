@@ -14,5 +14,5 @@ export function createImmerReducerStore(initialState: any, reducer: any) {
 		});
 	}
 
-	return { subscribe, dispatch };
+	return { subscribe, dispatch, update };
 }
