@@ -16,7 +16,7 @@ const ADD_RESPONSE = 'ADD_RESPONSE';
 const SET_CURRENT_SURVEY = 'SET_CURRENT_SURVEY';
 const SET_CURRENT_QUESTION = 'SET_CURRENT_QUESTION';
 const UPDATE_QUESTION = 'UPDATE_QUESTION';
-const CLEAR_CURRENT_QUESTION = 'CLEAR_CURRENT_QUESTION';
+const CLEAR_CURRENT_SURVEY = 'CLEAR_CURRENT_SURVEY';
 
 function reducer(state: CurrentSurveyState, action: Action) {
 	switch (action.type) {
@@ -51,7 +51,7 @@ function reducer(state: CurrentSurveyState, action: Action) {
 				}
 			})(state);
 		}
-		case CLEAR_CURRENT_QUESTION: {
+		case CLEAR_CURRENT_SURVEY: {
 			return produce((draft: CurrentSurveyState) => {
 				draft.id = 0;
 				draft.questions = [];

@@ -19,7 +19,7 @@
 		});
 
 		return () => {
-			dispatch({ type: 'CLEAR_CURRENT_QUESTION' });
+			dispatch({ type: 'CLEAR_CURRENT_SURVEY' });
 		};
 	});
 
