@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { store, storeReducer } from '../../../stores/surveys.immer.store';
+	import { store, storeReducer } from '../../../stores/immer/surveys.immer.store';
 
 	const { actions } = store;
 	const { dispatch } = storeReducer;

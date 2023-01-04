@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 import produce from 'immer';
-import type { SurveyData, SurveysState } from './types';
+import type { SurveyData, SurveysState } from '../types';
 
 const initialState: SurveysState = [];
 
@@ -20,8 +20,8 @@ function createSurveysStore(initialState: SurveysState, actions: any) {
 	const store = writable(initialState);
 
 	const mappedActions = Object.keys(actions).reduce((accumulator: any, actionName: string) => {
-		accumulator[actionName] = (payload: any) =>
-			store.update((state) => produce(actions[actionName])(state, payload));
+		accumulator[actionName] = () =>
+			store.update((state) => produce<SurveysState>(actions[actionName])(state));
 
 		return accumulator;
 	}, {});
