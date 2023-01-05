@@ -21,13 +21,15 @@ export interface GlobalState {
 	currentTabPanel: DesignTabState;
 }
 
+export interface CurrentQuestionData {
+	id: number;
+	responses: ResponseData[];
+}
+
 export interface CurrentSurveyState {
 	id: number;
 	questions: QuestionsState;
-	currentQuestion: {
-		id: number;
-		responses: ResponseData[];
-	};
+	currentQuestion: CurrentQuestionData;
 }
 
 export type DesignTabState = 'responses' | 'routings';

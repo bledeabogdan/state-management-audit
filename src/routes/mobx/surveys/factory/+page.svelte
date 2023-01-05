@@ -41,7 +41,7 @@
 			<Button kind="danger-tertiary" size="small" on:click={() => handleSurveyDelete(row.id)}>
 				Delete
 			</Button>
-			<Button kind="ghost" size="small" href="/immer/survey/{row.id}">Open</Button>
+			<Button kind="ghost" size="small" href="/mobx/survey/{row.id}">Open</Button>
 		{:else}
 			{cell.value}
 		{/if}
