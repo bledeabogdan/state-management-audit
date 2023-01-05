@@ -16,6 +16,7 @@
 		<HeaderNavMenu text="Mobx">
 			<HeaderNavItem href="/mobx/surveys/class" text="Class" />
 			<HeaderNavItem href="/mobx/surveys/factory" text="Factory" />
+			<HeaderNavItem href="/mobx/surveys/global-state" text="Global state" />
 		</HeaderNavMenu>
 	</HeaderNav>
 </Header>

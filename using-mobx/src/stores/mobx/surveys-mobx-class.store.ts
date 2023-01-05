@@ -22,6 +22,10 @@ export class SurveysStore {
 		const filteredSurveys = this.surveys.filter((s) => s.id !== surveyId);
 		this.surveys = filteredSurveys;
 	}
+
+	clear() {
+		this.surveys = [];
+	}
 }
 
 export const store = new SurveysStore(initialState);
