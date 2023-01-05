@@ -47,7 +47,7 @@ class CurrentQuestion {
 	}
 }
 
-class CurrentSurveyStore {
+export class CurrentSurveyStore {
 	id = 0;
 	questions: QuestionsState = [];
 	currentQuestion: CurrentQuestion;

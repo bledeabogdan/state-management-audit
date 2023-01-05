@@ -3,7 +3,7 @@ import type { SurveyData, SurveysState } from '../types';
 
 const initialState: SurveysState = [];
 
-class SurveysStore {
+export class SurveysStore {
 	surveys: SurveysState = [];
 
 	constructor(initialState: SurveysState) {
