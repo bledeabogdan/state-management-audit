@@ -17,10 +17,6 @@
 			<HeaderNavItem href="/immer/surveys/reducers" text="Reducers" />
 			<HeaderNavItem href="/immer/surveys/actions" text="Actions" />
 		</HeaderNavMenu>
-		<HeaderNavMenu text="Mobx">
-			<HeaderNavItem href="/mobx/surveys/class" text="Class" />
-			<HeaderNavItem href="/mobx/surveys/factory" text="Factory" />
-		</HeaderNavMenu>
 	</HeaderNav>
 </Header>
 

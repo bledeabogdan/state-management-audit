@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { DataTable, Button, Toolbar, ToolbarContent } from 'carbon-components-svelte';
 	import { store } from '../../../../stores/immer/surveys-immer-reducer.store';
+	import type { SurveyData } from '../../../../stores/types.js';
 
 	const { dispatch } = store;
+
+	let tableRows = $store.map((survey: SurveyData) => ({ id: survey.id, name: survey.name }));
 
 	function handleSurveyAdd() {
 		const id = Math.random();
@@ -20,7 +23,7 @@
 		{ key: 'name', value: 'Name' },
 		{ key: 'actions', value: 'Actions' }
 	]}
-	rows={$store.map((survey) => ({ id: survey.id, name: survey.name }))}
+	rows={tableRows}
 >
 	<Toolbar>
 		<ToolbarContent>
