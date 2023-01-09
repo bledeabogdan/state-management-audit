@@ -1,9 +1,10 @@
-import { CurrentSurveyStore } from './current-survey-mobx-class.store';
+import { CurrentQuestionStore, CurrentSurveyStore } from './current-survey-mobx-class.store';
 import { SurveysStore } from './surveys-mobx-class.store';
 
 class AppStore {
 	surveysStore: SurveysStore;
 	currentSurveyStore: CurrentSurveyStore;
+	currentQuestionStore: CurrentQuestionStore;
 
 	constructor() {
 		this.surveysStore = new SurveysStore([]);
@@ -15,6 +16,13 @@ class AppStore {
 				responses: []
 			}
 		});
+		this.currentQuestionStore = new CurrentQuestionStore(0, []);
+	}
+
+	clear() {
+		this.surveysStore.clear();
+		this.currentQuestionStore.clearCurrentQuestion();
+		this.currentSurveyStore.clearCurrentSurvey();
 	}
 }
 

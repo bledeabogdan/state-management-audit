@@ -1,17 +1,17 @@
 <script lang="ts">
 	import { autorun } from 'mobx';
-	import { store } from '../stores/mobx/current-survey-mobx-class.store';
+	import { appStore } from '../stores/mobx/global.store';
 	import { onDestroy } from 'svelte';
 
-	let id : number = 0;
+	let id: number;
 
 	const disposer = autorun(() => {
-		id = store.currentQuestion.id;
+		id = appStore.currentQuestionStore.id;
 	});
 
 	onDestroy(disposer);
 </script>
 
 {#if id}
-	{id}
+  {id}
 {/if}
