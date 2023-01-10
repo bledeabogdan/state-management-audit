@@ -1,0 +1,25 @@
+{
+  "name": "performance-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "immer:200": "node immer.js 200",
+    "immer:2000": "node immer.js 2000",
+    "immer:20000": "node immer.js 20000",
+    "mobx:200": "node mobx.js 200",
+    "mobx:2000": "node mobx.js 2000",
+    "mobx:20000": "node mobx.js 20000",
+    "xstate:200": "node xstate.js 200",
+    "xstate:2000": "node xstate.js 2000",
+    "xstate:20000": "node xstate.js 20000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "immer": "^9.0.17",
+    "mobx": "^6.7.0",
+    "xstate": "^4.35.2"
+  }
+}
