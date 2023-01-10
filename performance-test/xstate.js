@@ -10,6 +10,7 @@ const noIterations = Number(iterations);
 
 const machine = createMachine({
     id: "machine",
+    predictableActionArguments: true,
     initial: "idle",
     context: {
         array: []
