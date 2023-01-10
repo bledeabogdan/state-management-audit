@@ -23,6 +23,8 @@
 
 	onMount(() => {
 		currentSurveyService.send("SET_CURRENT_SURVEY", {id});
+
+		return () => currentSurveyService.send("CLEAR");
 	});
 
 	function handleQuestionAdd() {

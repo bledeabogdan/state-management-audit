@@ -11,7 +11,8 @@ type Events =
 			type: 'SET_CURRENT_SURVEY';
 			id: number;
 	  }
-	| { type: 'SET_CURRENT_QUESTION'; id: number };
+	| { type: 'SET_CURRENT_QUESTION'; id: number }
+	| { type: 'CLEAR' };
 
 export const currentSurveyMachine = createMachine<Context, Events>({
 	id: 'currentSurvey',
@@ -48,7 +49,24 @@ export const currentSurveyMachine = createMachine<Context, Events>({
 						}
 					})
 				},
+
+				CLEAR: {
+					target: 'inactive'
+				}
+			}
+		},
+		inactive: {
+			entry: assign({
+				id: 0,
+				questions: [],
+				currentQuestion: {
+					id: 0,
+					responses: []
+				}
+			}),
+			on: {
 				SET_CURRENT_SURVEY: {
+					target: 'active',
 					actions: assign({
 						id: (_, event) => {
 							return event.id;
