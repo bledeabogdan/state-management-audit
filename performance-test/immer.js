@@ -12,7 +12,6 @@ const baseState = [];
 console.time("immer");
 
 const nextState = produce(baseState, d => {
-
     for (let i = 0; i < noIterations; i++) {
         d.push({
             id: Math.random(),
