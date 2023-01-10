@@ -10,9 +10,9 @@ type Events =
 	| { type: 'CLEAR' }
 	| { type: 'DELETE_SURVEY'; id: number };
 
-const surveysMachine = createMachine<Context, Events>({
+export const surveysMachine = createMachine<Context, Events>({
 	id: 'surveys',
-	initial: 'idle',
+	initial: 'empty',
 	predictableActionArguments: true,
 	context: {
 		surveys: []
@@ -21,7 +21,17 @@ const surveysMachine = createMachine<Context, Events>({
 		empty: {
 			entry: assign({
 				surveys: []
-			})
+			}),
+			on: {
+				NEW_SURVEY: {
+					target: 'idle',
+					actions: assign({
+						surveys: (context, event) => {
+							return context.surveys.concat(event.survey);
+						}
+					})
+				}
+			}
 		},
 		idle: {
 			on: {
