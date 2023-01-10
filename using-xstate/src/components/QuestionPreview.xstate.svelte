@@ -1,11 +1,12 @@
 <script lang="ts">
-	import {currentSurveyMachine} from "../machines/current-survey.machine";
-	import { useMachine } from '@xstate/svelte';
+	import {currentSurveyService} from "../machines/current-survey.machine";
 
-	const {state} = useMachine(currentSurveyMachine);
+	let id: number = 0;
+
+	currentSurveyService.onTransition(state => id = state.context.currentQuestion.id);
 </script>
 
 Question preview
-{#if $state.context.id}
-	{$state.context.id}
+{#if id}
+	{id}
 {/if}

@@ -1,11 +1,10 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { Grid, Row, Column, Button, TileGroup, RadioTile } from 'carbon-components-svelte';
-	import {currentSurveyMachine} from "../../../../machines/current-survey.machine";
+	import {currentSurveyService} from "../../../../machines/current-survey.machine";
 	import QuestionPreview from '../../../../components/QuestionPreview.xstate.svelte';
 	import Tabs from '../../../../components/Tabs.mobx.svelte';
 	import type { CurrentQuestionData, QuestionsState } from 'src/machines/types';
-	import { interpret } from 'xstate';
 	import { onMount } from 'svelte';
 
 	export let data: PageData;
@@ -15,16 +14,15 @@
 		responses: []
 	};
 
-	const currentSurveyService = interpret(currentSurveyMachine).onTransition((state) => {
-		console.log("survey page on transition", state.context);
+	currentSurveyService.onTransition(state => {
 		questions = state.context.questions;
 		currentQuestion = state.context.currentQuestion;
-	}).start();
+	})
 
 	const { id } = data;
 
 	onMount(() => {
-		currentSurveyService.send("SET_CURRENT_SURVEY", {value: id});
+		currentSurveyService.send("SET_CURRENT_SURVEY", {id});
 	});
 
 	function handleQuestionAdd() {
@@ -35,11 +33,11 @@
 			shortcut: `Shortcut${id}`
 		};
 
-		currentSurveyService.send("ADD_QUESTION", {value: question})
+		currentSurveyService.send("ADD_QUESTION", {question})
 	}
 
-	function handleQuestionClick(question: any) {
-		currentSurveyService.send("SET_CURRENT_QUESTION", {value: question.id})
+	function handleQuestionClick(id: number) {
+		currentSurveyService.send("SET_CURRENT_QUESTION", {id})
 	}
 </script>
 
@@ -49,7 +47,7 @@
 			<Button on:click={handleQuestionAdd}>Add question</Button>
 			<TileGroup legend="Questions">
 				{#each questions as question (question.id)}
-					<RadioTile value={question.id.toString()} on:click={() => handleQuestionClick(question)}>
+					<RadioTile value={question.id.toString()} on:click={() => handleQuestionClick(question.id)}>
 						{question.mainCaption}
 					</RadioTile>
 				{/each}

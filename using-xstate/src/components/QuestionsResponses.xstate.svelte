@@ -7,8 +7,7 @@
 		StructuredListBody,
 		Button
 	} from 'carbon-components-svelte';
-	import {currentSurveyMachine} from "../machines/current-survey.machine";
-	import {interpret} from "xstate";
+	import {currentSurveyService} from "../machines/current-survey.machine";
 	import type { CurrentQuestionData } from 'src/machines/types';
 
 	let question: CurrentQuestionData = {
@@ -16,7 +15,7 @@
 		responses: []
 	}
 
-	const currentSurveyService = interpret(currentSurveyMachine).onTransition((state) => {
+	currentSurveyService.onTransition((state) => {
 		question = state.context.currentQuestion;
 	}).start();
 
@@ -28,7 +27,7 @@
 			mainCaption: `Response-Caption${id}`
 		};
 
-		currentSurveyService.send("ADD_RESPONSE", {value: response})
+		currentSurveyService.send("ADD_RESPONSE", {response})
 	}
 </script>
 

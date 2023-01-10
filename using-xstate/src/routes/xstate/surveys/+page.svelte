@@ -1,25 +1,29 @@
 <script lang="ts">
 	import { DataTable, Button, Toolbar, ToolbarContent } from 'carbon-components-svelte';
-	import {useMachine} from "@xstate/svelte";
-	import { surveysMachine } from '../../../machines/surveys.machine';
 	import type { SurveyData } from 'src/machines/types';
+	import { surveysService } from '../../../machines/surveys.machine';
 
-	const {state, send} = useMachine(surveysMachine);
+	let surveys: SurveyData[] = [];
+
+	const {send} = surveysService;
+
+	surveysService.onTransition((state) => {
+		surveys = state.context.surveys;
+	})
 
     function handleSurveyAdd(){
         const id = Math.random();
-
-        send("NEW_SURVEY", {value: {
+		const survey = {
             id,
             name: `Name${id}`
-        }})
+        }
+
+        send("NEW_SURVEY", {survey})
     }
 
     function handleSurveyDelete(id: number){
-        console.log("delete: %d", id);
+        send("DELETE_SURVEY", {surveyId: id});
     }
-
-	$: surveys = $state.context.surveys.map((survey: SurveyData) => ({ id: survey.id, name: survey.name }));
 </script>
 
 <DataTable
