@@ -41,7 +41,7 @@
 	}
 
 	function handleQuestionClick(question: any) {
-		store.currentQuestion.setCurrentQuestion(question.id);
+		store.setCurrentQuestion(question.id);
 	}
 
 	onDestroy(disposer);

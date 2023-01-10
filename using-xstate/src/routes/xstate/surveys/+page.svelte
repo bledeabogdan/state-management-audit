@@ -2,6 +2,7 @@
 	import { DataTable, Button, Toolbar, ToolbarContent } from 'carbon-components-svelte';
 	import {useMachine} from "@xstate/svelte";
 	import { surveysMachine } from '../../../machines/surveys.machine';
+	import type { SurveyData } from 'src/machines/types';
 
 	const {state, send} = useMachine(surveysMachine);
 
@@ -18,7 +19,7 @@
         console.log("delete: %d", id);
     }
 
-	$: surveys = $state.context.surveys;
+	$: surveys = $state.context.surveys.map((survey: SurveyData) => ({ id: survey.id, name: survey.name }));
 </script>
 
 <DataTable
@@ -27,7 +28,7 @@
 		{ key: 'name', value: 'Name' },
 		{ key: 'actions', value: 'Actions' }
 	]}
-	rows={surveys.map((survey) => ({ id: survey.id, name: survey.name }))}
+	rows={surveys}
 >
 	<Toolbar>
 		<ToolbarContent>

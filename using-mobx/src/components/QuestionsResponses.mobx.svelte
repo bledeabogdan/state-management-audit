@@ -24,7 +24,7 @@
 	function handleAddResponse() {
 		const id = Math.random();
 
-		store.currentQuestion.addResponse({
+		store.addResponse({
 			id,
 			questionId: currentQuestion.id,
 			mainCaption: `Response-Caption${id}`

@@ -51,14 +51,21 @@ export class CurrentQuestionStore {
 export class CurrentSurveyStore {
 	id = 0;
 	questions: QuestionsState = [];
+	currentQuestion: CurrentQuestionData = {
+		id: 0,
+		responses: []
+	};
 
 	constructor(initialState: CurrentSurveyState) {
 		makeObservable(this, {
 			id: observable,
 			questions: observable,
+			currentQuestion: observable,
 			addQuestion: action,
 			setCurrentSurvey: action,
-			clearCurrentSurvey: action
+			clearCurrentSurvey: action,
+			setCurrentQuestion: action,
+			addResponse: action
 		});
 
 		this.id = initialState.id;
@@ -76,6 +83,17 @@ export class CurrentSurveyStore {
 	clearCurrentSurvey() {
 		this.id = 0;
 		this.questions = [];
+		this.currentQuestion.id = 0;
+		this.currentQuestion.responses = [];
+	}
+
+	setCurrentQuestion(id: number) {
+		this.currentQuestion.id = id;
+		this.currentQuestion.responses = [];
+	}
+
+	addResponse(response: ResponseData) {
+		this.currentQuestion.responses = this.currentQuestion.responses.concat(response);
 	}
 }
 
