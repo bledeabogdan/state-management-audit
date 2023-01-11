@@ -14,7 +14,7 @@ export const currentSurvey = createStore<CurrentSurveyState>(initialState);
 
 const addQuestion = (state: CurrentSurveyState, question: QuestionData) => ({
 	...state,
-	questions: state.questions.concat(question)
+	questions: [...state.questions, question]
 });
 const setCurrentSurvey = (state: CurrentSurveyState, id: number) => ({ ...state, id });
 const setCurrentQuestion = (state: CurrentSurveyState, id: number) => ({
@@ -28,7 +28,7 @@ const addResponse = (state: CurrentSurveyState, response: ResponseData) => ({
 	...state,
 	currentQuestion: {
 		...state.currentQuestion,
-		responses: state.currentQuestion.responses.concat(response)
+		responses: [...state.currentQuestion.responses, response]
 	}
 });
 const clear = () => initialState;

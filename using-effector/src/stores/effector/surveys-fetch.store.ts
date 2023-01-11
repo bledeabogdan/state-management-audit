@@ -1,6 +1,6 @@
 import { createStore, createEvent, createEffect } from 'effector';
 import type { SurveyData, SurveysState } from '../types';
-import { surveysDataToFetch } from '../utils';
+import { fetchSurveys } from '../utils';
 
 const initialState: SurveysState = [];
 
@@ -8,15 +8,7 @@ export const addSurvey = createEvent<SurveyData>();
 export const deleteSurvey = createEvent<number>();
 export const clear = createEvent();
 
-export const fetchSurveysFx = createEffect<void, any, SurveyData[]>(async () => {
-	const res = await new Promise((resolve) => {
-		setTimeout(() => {
-			resolve(surveysDataToFetch);
-		}, 2000);
-	});
-
-	return res;
-});
+export const fetchSurveysFx = createEffect<void, any, SurveyData[]>(fetchSurveys);
 
 export const surveys = createStore<SurveysState>(initialState)
 	.on(addSurvey, (state, survey) => [...state, survey])

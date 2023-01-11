@@ -4,7 +4,8 @@
 		Header,
 		HeaderNav,
 		HeaderNavItem,
-		Content
+		Content,
+		HeaderNavMenu
 	} from 'carbon-components-svelte';
 
 	let isSideNavOpen = false;
@@ -12,7 +13,10 @@
 
 <Header platformName="State management audit" bind:isSideNavOpen href="/">
 	<HeaderNav>
-		<HeaderNavItem href="/xstate/surveys" text="Surveys" />
+		<HeaderNavMenu text="Xstate">
+			<HeaderNavItem href="/xstate/surveys" text="Surveys" />
+			<HeaderNavItem href="/xstate/surveys/fetch" text="Fetch" />
+		</HeaderNavMenu>
 	</HeaderNav>
 </Header>
 

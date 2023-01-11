@@ -31,7 +31,7 @@ export const currentSurveyMachine = createMachine<Context, Events>({
 			on: {
 				ADD_QUESTION: {
 					actions: assign({
-						questions: (context, event) => context.questions.concat(event.question)
+						questions: (context, event) => [...context.questions, event.question]
 					})
 				},
 				SET_CURRENT_QUESTION: {
@@ -41,12 +41,10 @@ export const currentSurveyMachine = createMachine<Context, Events>({
 				},
 				ADD_RESPONSE: {
 					actions: assign({
-						currentQuestion: (context, event) => {
-							return {
-								id: context.currentQuestion.id,
-								responses: context.currentQuestion.responses.concat(event.response)
-							};
-						}
+						currentQuestion: (context, event) => ({
+							id: context.currentQuestion.id,
+							responses: [...context.currentQuestion.responses, event.response]
+						})
 					})
 				},
 
@@ -68,9 +66,7 @@ export const currentSurveyMachine = createMachine<Context, Events>({
 				SET_CURRENT_SURVEY: {
 					target: 'active',
 					actions: assign({
-						id: (_, event) => {
-							return event.id;
-						}
+						id: (_, event) => event.id
 					})
 				}
 			}
