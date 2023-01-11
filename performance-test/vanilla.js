@@ -12,7 +12,7 @@ const noIterations = Number(iterations);
 
 let array = [];
 
-console.time("vanilla");
+console.time("vanilla-spread");
 
 for (let i = 0; i < noIterations; i++) {
     array = [...array, {
@@ -32,4 +32,28 @@ for (let i = 0; i < noIterations; i++) {
     }];
 }
 
-console.timeEnd("vanilla");
+console.timeEnd("vanilla-spread");
+
+array = [];
+
+console.time("vanilla-push");
+
+for (let i = 0; i < noIterations; i++) {
+    array.push({
+        id: Math.random(),
+        one: i,
+        two: '2',
+        three: 3,
+        x: 'xxxxx',
+        y: 'yyyyy',
+        z: 'zzzzz',
+        z1: 'zzzzz',
+        z2: 'zzzzz',
+        z3: 'zzzzz',
+        z4: {
+            nested: true
+        }
+    });
+}
+
+console.timeEnd("vanilla-push");
