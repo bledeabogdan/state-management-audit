@@ -10,9 +10,9 @@ if (!iterations) {
 
 const noIterations = Number(iterations);
 
-// mobx
+// mobx: using `array.push`
 
-class Arr {
+class ArrPush {
     values = [];
 
     constructor(initialState) {
@@ -29,12 +29,12 @@ class Arr {
     }
 }
 
-const arrStore = new Arr([]);
+const arrPushStore = new ArrPush([]);
 
-console.time("mobx");
+console.time("mobx-push");
 
 for (let i = 0; i < noIterations; i++) {
-    arrStore.addValue({
+    arrPushStore.addValue({
         id: Math.random(),
         one: i,
         two: '2',
@@ -51,4 +51,47 @@ for (let i = 0; i < noIterations; i++) {
     });
 }
 
-console.timeEnd("mobx");
+console.timeEnd("mobx-push");
+
+// mobx: using spread operator
+
+class ArrSpread {
+    values = [];
+
+    constructor(initialState) {
+        makeObservable(this, {
+            values: observable,
+            addValue: action
+        })
+
+        this.values = initialState;
+    }
+
+    addValue(value) {
+        this.values = [...this.values, value];
+    }
+}
+
+const arrSpreadStore = new ArrSpread([]);
+
+console.time("mobx-spread");
+
+for (let i = 0; i < noIterations; i++) {
+    arrSpreadStore.addValue({
+        id: Math.random(),
+        one: i,
+        two: '2',
+        three: 3,
+        x: 'xxxxx',
+        y: 'yyyyy',
+        z: 'zzzzz',
+        z1: 'zzzzz',
+        z2: 'zzzzz',
+        z3: 'zzzzz',
+        z4: {
+            nested: true
+        }
+    });
+}
+
+console.timeEnd("mobx-spread");
