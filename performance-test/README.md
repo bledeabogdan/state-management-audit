@@ -12,4 +12,4 @@ Add 200/2000/20000 elements inside an array;
 
 > \*\* running produce for every iteration
 
-> \*\*\* using `array.push` instead of `[...array, element]`
+> \*\*\* using `array.push(element)` instead of `[...array, element]`
