@@ -15,7 +15,10 @@
     "xstate:20000": "node xstate.js 20000",
     "effector:200": "node effector.js 200",
     "effector:2000": "node effector.js 2000",
-    "effector:20000": "node effector.js 20000"
+    "effector:20000": "node effector.js 20000",
+    "vanilla:200": "node vanilla.js 200",
+    "vanilla:2000": "node vanilla.js 2000",
+    "vanilla:20000": "node vanilla.js 20000"
   },
   "keywords": [],
   "author": "",

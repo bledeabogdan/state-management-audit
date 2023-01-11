@@ -1,3 +1,5 @@
+// Get iterations param
+
 const iterations = process.argv.slice(2)[0];
 
 if (!iterations) {
@@ -5,6 +7,8 @@ if (!iterations) {
 }
 
 const noIterations = Number(iterations);
+
+// vanilla
 
 let array = [];
 

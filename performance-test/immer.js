@@ -1,5 +1,7 @@
 const { default: produce } = require("immer");
 
+// Get iterations param
+
 const iterations = process.argv.slice(2)[0];
 
 if (!iterations) {
@@ -8,10 +10,12 @@ if (!iterations) {
 
 const noIterations = Number(iterations);
 
+// immer
 const baseState = [];
+
 console.time("immer");
 
-const nextState = produce(baseState, d => {
+produce(baseState, d => {
     for (let i = 0; i < noIterations; i++) {
         d.push({
             id: Math.random(),
@@ -32,5 +36,3 @@ const nextState = produce(baseState, d => {
 })
 
 console.timeEnd("immer");
-
-console.log(nextState.length);

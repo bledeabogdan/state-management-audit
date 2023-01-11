@@ -1,5 +1,7 @@
 const { makeObservable, observable, action } = require("mobx");
 
+// Get iterations param
+
 const iterations = process.argv.slice(2)[0];
 
 if (!iterations) {
@@ -7,6 +9,9 @@ if (!iterations) {
 }
 
 const noIterations = Number(iterations);
+
+
+// mobx
 
 class Arr {
     values = [];

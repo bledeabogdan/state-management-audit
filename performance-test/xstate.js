@@ -1,5 +1,7 @@
 const { createMachine, assign, interpret } = require("xstate");
 
+// Get iterations param
+
 const iterations = process.argv.slice(2)[0];
 
 if (!iterations) {
@@ -7,6 +9,8 @@ if (!iterations) {
 }
 
 const noIterations = Number(iterations);
+
+// xstate
 
 const machine = createMachine({
     id: "machine",

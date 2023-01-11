@@ -1,5 +1,6 @@
 const { createStore, createEvent, createApi } = require("effector");
 
+// Get iterations param
 const iterations = process.argv.slice(2)[0];
 
 if (!iterations) {
@@ -8,13 +9,14 @@ if (!iterations) {
 
 const noIterations = Number(iterations);
 
-const array = createStore([]);
+// effector: createStore, createEvent
 
+const array = createStore([]);
 const addElement = createEvent();
 
 array.on(addElement, (state, element) => [].concat(state, element));
 
-console.time("effector");
+console.time("effector-addElement");
 
 for (let i = 0; i < noIterations; i++) {
     addElement({
@@ -34,7 +36,9 @@ for (let i = 0; i < noIterations; i++) {
     })
 }
 
-console.timeEnd("effector");
+console.timeEnd("effector-addElement");
+
+// effector: createStore, createApi
 
 const arrayWithApi = createStore([]);
 
