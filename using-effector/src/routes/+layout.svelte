@@ -13,7 +13,10 @@
 
 <Header platformName="State management audit" bind:isSideNavOpen href="/">
 	<HeaderNav>
-		<HeaderNavItem href="/effector/surveys" text="Surveys" />
+		<HeaderNavMenu text="Effector" >
+			<HeaderNavItem href="/effector/surveys" text="W/O Api" />
+			<HeaderNavItem href="/effector/surveys/api" text="Api" />
+		</HeaderNavMenu>
 	</HeaderNav>
 </Header>
 

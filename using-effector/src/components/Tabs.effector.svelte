@@ -1,6 +1,6 @@
 <script>
 	import { Tab, TabContent, Tabs } from 'carbon-components-svelte';
-	import QuestionsResponses from './QuestionsResponses.immer.svelte';
+	import QuestionsResponses from './QuestionsResponses.effector.svelte';
 </script>
 
 <Tabs>

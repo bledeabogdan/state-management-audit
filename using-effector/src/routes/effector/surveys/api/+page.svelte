@@ -1,21 +1,19 @@
 <script lang="ts">
 	import { DataTable, Button, Toolbar, ToolbarContent } from 'carbon-components-svelte';
-	import {surveys, addSurvey, deleteSurvey, clear} from "../../../stores/effector/surveys.store";
+	import {surveys, surveysApi} from "../../../../stores/effector/surveys-api.store";
 
 	function handleSurveyAdd() {
 		const id = Math.random();
-		addSurvey({ id, name: `Name${id}` });
+		surveysApi.addSurvey({ id, name: `Name${id}` });
 	}
 
 	function handleSurveyDelete(id: number) {
-		deleteSurvey(id);
+		surveysApi.deleteSurvey(id);
 	}
 
 	function handleClear() {
-		clear();
+		surveysApi.clear();
 	}
-
-	$: allSurveys = $surveys;
 </script>
 
 <DataTable
@@ -24,7 +22,7 @@
 		{ key: 'name', value: 'Name' },
 		{ key: 'actions', value: 'Actions' }
 	]}
-	rows={allSurveys.map((survey) => ({ id: survey.id, name: survey.name }))}
+	rows={$surveys.map((survey) => ({ id: survey.id, name: survey.name }))}
 >
 	<Toolbar>
 		<ToolbarContent>

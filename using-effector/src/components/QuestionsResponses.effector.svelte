@@ -7,21 +7,17 @@
 		StructuredListBody,
 		Button
 	} from 'carbon-components-svelte';
-	import { store } from '../stores/immer/current-survey-immer-reducer.store';
-
-	const { dispatch } = store;
+	import {currentSurvey, currentSurveyApi} from "../stores/effector/current-survey.store";
 
 	function handleAddResponse() {
 		const id = Math.random();
-
-		dispatch({
-			type: 'ADD_RESPONSE',
-			payload: {
+		const response = {
 				id,
-				questionId: $store.currentQuestion.id,
+				questionId: $currentSurvey.currentQuestion.id,
 				mainCaption: `Response-Caption${id}`
-			}
-		});
+			};
+
+			currentSurveyApi.addResponse(response);
 	}
 </script>
 
@@ -34,7 +30,7 @@
 		</StructuredListRow>
 	</StructuredListHead>
 	<StructuredListBody>
-		{#each $store.currentQuestion.responses as response (response.id)}
+		{#each $currentSurvey.currentQuestion.responses as response (response.id)}
 			<StructuredListRow>
 				<StructuredListCell noWrap>{response.mainCaption}</StructuredListCell>
 				<StructuredListCell>
