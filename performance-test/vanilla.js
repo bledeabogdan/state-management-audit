@@ -15,7 +15,7 @@ let array = [];
 console.time("vanilla");
 
 for (let i = 0; i < noIterations; i++) {
-    array = array.concat({
+    array = [...array, {
         id: Math.random(),
         one: i,
         two: '2',
@@ -29,7 +29,7 @@ for (let i = 0; i < noIterations; i++) {
         z4: {
             nested: true
         }
-    })
+    }];
 }
 
 console.timeEnd("vanilla");

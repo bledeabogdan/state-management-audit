@@ -10,7 +10,6 @@ if (!iterations) {
 
 const noIterations = Number(iterations);
 
-
 // mobx
 
 class Arr {

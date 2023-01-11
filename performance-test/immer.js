@@ -11,28 +11,31 @@ if (!iterations) {
 const noIterations = Number(iterations);
 
 // immer
-const baseState = [];
+let baseState = [];
 
 console.time("immer");
 
-produce(baseState, d => {
-    for (let i = 0; i < noIterations; i++) {
-        d.push({
-            id: Math.random(),
-            one: i,
-            two: '2',
-            three: 3,
-            x: 'xxxxx',
-            y: 'yyyyy',
-            z: 'zzzzz',
-            z1: 'zzzzz',
-            z2: 'zzzzz',
-            z3: 'zzzzz',
-            z4: {
-                nested: true
-            }
-        })
-    }
-})
+for (let i = 0; i < noIterations; i++) {
+    baseState = produce(
+        baseState,
+        d => {
+            d.push({
+                id: Math.random(),
+                one: i,
+                two: '2',
+                three: 3,
+                x: 'xxxxx',
+                y: 'yyyyy',
+                z: 'zzzzz',
+                z1: 'zzzzz',
+                z2: 'zzzzz',
+                z3: 'zzzzz',
+                z4: {
+                    nested: true
+                }
+            })
+        }
+    );
+}
 
 console.timeEnd("immer");

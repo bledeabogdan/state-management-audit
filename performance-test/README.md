@@ -3,9 +3,13 @@ Add 200/2000/20000 elements inside an array;
 | Lib\Iterations | 200         | 2000         | 20000        |
 | -------------- | ----------- | ------------ | ------------ |
 | vanilla        | `~ 0.35ms`  | `~ 12.26ms`  | `~ 1.17s`    |
-| immerjs        | `~ 2.72ms`  | `~ 19.30ms`  | `~ 74.97ms`  |
-| mobx           | `~ 17.24ms` | `~ 81.63ms`  | `~ 490.25ms` |
-| xstate         | `~ 12.94ms` | `~ 104.51ms` | `~ 2.13s`    |
-| effector       | `~ 5.01ms`  | `~ 25.55ms`  | `~ 1.17s`    |
+| immerjs\*\*    | `~ 11.90ms` | `~ 250.63ms` | `~ 23.76s`   |
+| mobx\*\*\*     | `~ 17.24ms` | `~ 81.63ms`  | `~ 490.25ms` |
+| xstate         | `~ 13.24ms` | `~ 107.93ms` | `~ 2.07s`    |
+| effector       | `~ 1.45ms`  | `~ 18.05ms`  | `~ 1.23s`    |
 
-\*run 5 times for each iteration
+> run 5 times for each iteration
+
+> \*\* running produce for every iteration
+
+> \*\*\* using `array.push` instead of `[...array, element]`

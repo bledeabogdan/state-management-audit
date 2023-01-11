@@ -14,7 +14,7 @@ const noIterations = Number(iterations);
 const array = createStore([]);
 const addElement = createEvent();
 
-array.on(addElement, (state, element) => [].concat(state, element));
+array.on(addElement, (state, element) => [...state, element]);
 
 console.time("effector-addElement");
 
@@ -42,7 +42,7 @@ console.timeEnd("effector-addElement");
 
 const arrayWithApi = createStore([]);
 
-const addElementWithApi = (state, element) => [].concat(state, element);
+const addElementWithApi = (state, element) => [...state, element];
 
 const arrayApi = createApi(arrayWithApi, {
     addElementWithApi
