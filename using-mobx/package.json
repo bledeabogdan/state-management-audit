@@ -32,7 +32,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"immer": "^9.0.17",
 		"mobx": "^6.7.0"
 	}
 }
