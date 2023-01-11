@@ -20,7 +20,7 @@ const machine = createMachine({
             on: {
                 ADD: {
                     actions: assign({
-                        array: (context, event) => context.array.concat(event.payload)
+                        array: (context, event) => [...context.array].concat(event.payload)
                     })
                 }
             }

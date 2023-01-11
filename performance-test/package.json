@@ -12,12 +12,16 @@
     "mobx:20000": "node mobx.js 20000",
     "xstate:200": "node xstate.js 200",
     "xstate:2000": "node xstate.js 2000",
-    "xstate:20000": "node xstate.js 20000"
+    "xstate:20000": "node xstate.js 20000",
+    "effector:200": "node effector.js 200",
+    "effector:2000": "node effector.js 2000",
+    "effector:20000": "node effector.js 20000"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "effector": "^22.5.0",
     "immer": "^9.0.17",
     "mobx": "^6.7.0",
     "xstate": "^4.35.2"
