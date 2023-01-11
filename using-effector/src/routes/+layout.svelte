@@ -16,6 +16,7 @@
 		<HeaderNavMenu text="Effector" >
 			<HeaderNavItem href="/effector/surveys" text="W/O Api" />
 			<HeaderNavItem href="/effector/surveys/api" text="Api" />
+			<HeaderNavItem href="/effector/surveys/fetch" text="Fetch" />
 		</HeaderNavMenu>
 	</HeaderNav>
 </Header>

@@ -11,5 +11,3 @@ export const surveys = createStore<SurveysState>(initialState)
 	.on(addSurvey, (state, survey) => state.concat(survey))
 	.on(deleteSurvey, (state, id) => state.filter((s) => s.id !== id))
 	.on(clear, () => initialState);
-
-surveys.watch(console.log);
