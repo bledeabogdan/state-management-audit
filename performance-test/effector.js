@@ -12,7 +12,7 @@ const array = createStore([]);
 
 const addElement = createEvent();
 
-array.on(addElement, (state, element) => { state.push(element) });
+array.on(addElement, (state, element) => [].concat(state, element));
 
 console.time("effector");
 
@@ -38,7 +38,7 @@ console.timeEnd("effector");
 
 const arrayWithApi = createStore([]);
 
-const addElementWithApi = (state, element) => { state.push(element) };
+const addElementWithApi = (state, element) => [].concat(state, element);
 
 const arrayApi = createApi(arrayWithApi, {
     addElementWithApi
@@ -65,5 +65,3 @@ for (let i = 0; i < noIterations; i++) {
 }
 
 console.timeEnd("effectorWithApi");
-
-arrayWithApi.watch(state => console.log(state.length));
